@@ -18,4 +18,10 @@ RSpec.describe DishesController, type: :controller do
     expect(Dish.count).to eql (1)
   end
 
+  it "creates a vegan dish" do
+    falafel = Dish.new(restaurant_id: 1, dish: "Falafel", vegan: true)
+    falafel.save
+    expect(falafel.vegan).to eql (true)
+  end
+
 end

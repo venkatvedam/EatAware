@@ -6,8 +6,8 @@
     Dishes
     <%= @dishes.each do |dish| %>
       <p><%= dish.dish %></p>
-      <p><%= dish.restaurant_id %></p>
       <p>Is it vegan? <%= dish.vegan %></p>
+      <p>Category: <%= dish.category %></p>
     <% end %>
 </body>
 </html>
