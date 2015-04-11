@@ -5,7 +5,7 @@ class DishesController < ApplicationController
   end
 
   def create
-    dish = Dish.new(name: params["name"], restaurant_id: params["restaurant_id"])
+    dish = Dish.new(dish: params["name"], restaurant_id: params["restaurant_id"])
     dish.save
     render json: {}, status: 201
   end
