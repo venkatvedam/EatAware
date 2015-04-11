@@ -7,9 +7,10 @@ RSpec.describe RestaurantsController, type: :controller do
       expect(response.status).to eql(200)
     end
     it "has a name" do
-      Restaurant.new(name: "test_restaurant")
+      test_restaurant = Restaurant.new(name: "test_restaurant")
+      expect(Restaurant).to receive(:all).and_return(test_restaurant)
       get :index, format: :json
-      expect(response.body).to eql({name: "test_restaurant"}.to_json)
+      expect(response.body).to eql(test_restaurant.to_json)
     end
   end
 
