@@ -1,0 +1,13 @@
+<html>
+<head>
+<%= csrf_meta_tags %>
+</head>
+<body>
+    Dishes
+    <%= @dishes.each do |dish| %>
+      <p><%= dish.dish %></p>
+      <p><%= dish.restaurant_id %></p>
+      <p>Is it vegan? <%= dish.vegan %></p>
+    <% end %>
+</body>
+</html>

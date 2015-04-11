@@ -14,5 +14,10 @@ RSpec.describe RestaurantsController, type: :controller do
     end
   end
 
+  it "creates a restaurant" do
+    post :create, {name: "Test"}.to_json, format: :json
+    expect(response.status).to be(201)
+    expect(Restaurant.count).to eql (1)
+  end
 
 end

@@ -12,7 +12,8 @@ RSpec.describe DishesController, type: :controller do
   end
 
   it "creates a dish" do
-    post :create, restaurant_id: 1, dish: "Sandwich", format: :json
+    params = {restaurant_id: 1, dish: "Sandwich"}
+    post :create, dish: params.to_json, format: :json
     expect(response.status).to be(201)
     expect(Dish.count).to eql (1)
   end
