@@ -11,19 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150411190056) do
+ActiveRecord::Schema.define(version: 20150411212407) do
 
   create_table "dishes", force: :cascade do |t|
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "name"
+    t.boolean  "vegan"
+    t.boolean  "dairy_free"
+    t.boolean  "gluten_free"
+    t.boolean  "nut_free"
+    t.boolean  "organic"
+    t.boolean  "shell_fish"
+    t.boolean  "non_gmo"
+    t.string   "dish"
+    t.string   "category"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "info"
+    t.string   "location"
+    t.string   "url"
   end
 
 end
