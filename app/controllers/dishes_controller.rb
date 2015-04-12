@@ -1,29 +1,38 @@
 class DishesController < ApplicationController
   respond_to :json
   def index
-    @dishes = Dish.where(restaurant_id: params[:restaurant_id])
+   @dishes = Dish.where(params.slice(:dish, :restaurant_id, :ingredients, :vegan, :dairy_free, :gluten_free, :nut_free, :organic, :shell_fish, :non_gmo, :restaurant, :category))
     respond_to do |format|
-      format.json {render json: Dish.where(restaurant_id: params[:restaurant_id])}
+      format.json {render json: @dishes}
       format.html {render}
     end
   end
 
+
   def create
-    dish = Dish.new(
-      dish: JSON.parse(params["dish"])["dish"], 
-      restaurant_id: JSON.parse(params["dish"])["restaurant_id"],
-      ingredients: JSON.parse(params["dish"])["ingredients"],
-      vegan: JSON.parse(params["dish"])["vegan"],
-      dairy_free: JSON.parse(params["dish"])["dairy_free"],
-      gluten_free: JSON.parse(params["dish"])["gluten_free"],
-      nut_free: JSON.parse(params["dish"])["nut_free"],
-      organic: JSON.parse(params["dish"])["organic"],
-      shell_fish: JSON.parse(params["dish"])["shell_fish"],
-      non_gmo: JSON.parse(params["dish"])["non_gmo"],
-      restaurant: JSON.parse(params["dish"])["restaurant"],
-      category: JSON.parse(params["dish"])["category"]
-    )
-    dish.save
+    dishes = JSON.parse(params["dishes"])
+    dishes.each { |dish|
+      dish = Dish.new(
+        dish: dish["dish"], 
+        restaurant_id: dish["restaurant_id"],
+        ingredients: dish["ingredients"],
+        vegan: dish["vegan"],
+        dairy_free: dish["dairy_free"],
+        gluten_free: dish["gluten_free"],
+        nut_free: dish["nut_free"],
+        organic: dish["organic"],
+        shell_fish: dish["shell_fish"],
+        non_gmo: dish["non_gmo"],
+        restaurant: dish["restaurant"],
+        category: dish["category"]
+      )
+      dish.save
+    }
     render json: {}, status: 201
+  end
+
+  private
+  def filtering_params(params)
+    params.slice(:restaurant_id, :vegan)
   end
 end

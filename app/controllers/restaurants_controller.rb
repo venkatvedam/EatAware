@@ -5,7 +5,6 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-  binding.pry
     restaurants = JSON.parse(params["restaurants"])
     restaurants.each { |restaurant|
       restaurant = Restaurant.new(
