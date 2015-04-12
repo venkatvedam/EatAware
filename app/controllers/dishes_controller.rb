@@ -9,7 +9,6 @@ class DishesController < ApplicationController
   end
 
   def create
-binding.pry
     dish = Dish.new(
       dish: JSON.parse(params["dish"])["dish"], 
       restaurant_id: JSON.parse(params["dish"])["restaurant_id"],

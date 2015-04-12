@@ -5,8 +5,17 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant = Restaurant.new(name: params["name"]) 
-    restaurant.save
+  binding.pry
+    restaurants = JSON.parse(params["restaurants"])
+    restaurants.each { |restaurant|
+      restaurant = Restaurant.new(
+        name: params["name"],
+        info: params["info"],
+	location: params["location"],
+	url: params["url"]
+      )
+      restaurant.save
+    }
     render json: {}, status: 201
   end
 end
