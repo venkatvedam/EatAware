@@ -40,39 +40,39 @@ RSpec.describe DishesController, type: :controller do
       category: "test_category",
       dish: "test_dish",
       ingredients: "test_ingredient",
-      vegan: "y",
-      dairy_free: "y",
-      gluten_free: "y",
-      nut_free: "y",
-      organic: "y",
-      shell_fish: "n",
-      non_gmo: "y"
+      vegan: "true",
+      dairy_free: "true",
+      gluten_free: "true",
+      nut_free: "true",
+      organic: "true",
+      shell_fish: "false",
+      non_gmo: "true"
   },  
   {
       restaurant_id: 2,
       category: "test_category_2",
       dish: "test_dish_2",
       ingredients: "test_ingredient_2",
-      vegan: "y",
-      dairy_free: "y",
-      gluten_free: "y",
-      nut_free: "y",
-      organic: "y",
-      shell_fish: "n",
-      non_gmo: "y"
+      vegan: "true",
+      dairy_free: "true",
+      gluten_free: "true",
+      nut_free: "true",
+      organic: "true",
+      shell_fish: "false",
+      non_gmo: "true"
   },  
   {
       restaurant_id: 1,
       category: "test_category_3",
       dish: "test_dish_3",
       ingredients: "test_ingredient_3",
-      vegan: "y",
-      dairy_free: "y",
-      gluten_free: "y",
-      nut_free: "y",
-      organic: "y",
-      shell_fish: "n",
-      non_gmo: "y"
+      vegan: "true",
+      dairy_free: "true",
+      gluten_free: "true",
+      nut_free: "true",
+      organic: "true",
+      shell_fish: "false",
+      non_gmo: "true"
   }]
     post :create, dishes: post_body.to_json, format: :json
     expect(response.status).to be(201)

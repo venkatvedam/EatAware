@@ -10,8 +10,8 @@ class RestaurantsController < ApplicationController
       restaurant = Restaurant.new(
         name: params["name"],
         info: params["info"],
-	location: params["location"],
-	url: params["url"]
+	      location: params["location"],
+	      url: params["url"]
       )
       restaurant.save
     }
