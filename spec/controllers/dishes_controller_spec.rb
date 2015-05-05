@@ -47,8 +47,8 @@ RSpec.describe DishesController, type: :controller do
       organic: "true",
       shell_fish: "false",
       non_gmo: "true"
-  },  
-  {
+    },
+    {
       restaurant_id: 2,
       category: "test_category_2",
       dish: "test_dish_2",
@@ -60,8 +60,8 @@ RSpec.describe DishesController, type: :controller do
       organic: "true",
       shell_fish: "false",
       non_gmo: "true"
-  },  
-  {
+    },
+    {
       restaurant_id: 1,
       category: "test_category_3",
       dish: "test_dish_3",
@@ -73,7 +73,7 @@ RSpec.describe DishesController, type: :controller do
       organic: "true",
       shell_fish: "false",
       non_gmo: "true"
-  }]
+    }]
     post :create, dishes: post_body.to_json, format: :json
     expect(response.status).to be(201)
     expect(Dish.count).to eql (3)
